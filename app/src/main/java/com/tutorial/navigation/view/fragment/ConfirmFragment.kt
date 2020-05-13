@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 
 import com.tutorial.navigation.R
 import com.tutorial.navigation.databinding.FragmentConfirmBinding
@@ -14,7 +17,7 @@ import com.tutorial.navigation.databinding.FragmentConfirmBinding
 class ConfirmFragment : Fragment() {
 
     private lateinit var binding: FragmentConfirmBinding
-    private lateinit var args: ConfirmFragmentArgs
+    private val args: ConfirmFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +29,6 @@ class ConfirmFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        args = arguments?.let { ConfirmFragmentArgs.fromBundle(it) }!!
         Toast.makeText(activity, args.dataModel.toString().trim(), Toast.LENGTH_LONG).show()
     }
 }

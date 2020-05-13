@@ -5,12 +5,12 @@ import android.os.Parcelable
 import java.math.BigDecimal
 
 data class DataModel(
-    var name: String?,
-    var amount: String?
+    var name: String,
+    var amount: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString()
+        parcel.readString().toString(),
+        parcel.readString().toString()
     ) {
     }
 

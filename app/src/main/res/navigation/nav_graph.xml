@@ -74,6 +74,15 @@
             android:name="dataModel"
             app:argType="com.tutorial.navigation.model.DataModel"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_specifyAmountFragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/confirmFragment"
