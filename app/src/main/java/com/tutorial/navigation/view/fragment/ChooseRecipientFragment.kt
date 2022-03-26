@@ -5,39 +5,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.tutorial.navigation.R
+import androidx.navigation.findNavController
 import com.tutorial.navigation.databinding.FragmentChooseRecipientBinding
 import com.tutorial.navigation.model.DataModel
+import com.tutorial.navigation.view.activity.MainActivity
 
 class ChooseRecipientFragment : Fragment() {
 
-    private lateinit var binding: FragmentChooseRecipientBinding
-    private lateinit var navController: NavController
+    private var _binding: FragmentChooseRecipientBinding? = null
+    private val binding get() = _binding!!
     private lateinit var dataModel: DataModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentChooseRecipientBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentChooseRecipientBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
         binding.btnSave.setOnClickListener {
             val name: String = binding.inputName.text.toString().trim()
-            if(!name.isEmpty()) {
+            if(name.isNotEmpty()) {
                 dataModel = DataModel(name, "")
-                navController.navigate(ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment(dataModel))
+                val destination = ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment(dataModel)
+                it.findNavController().navigate(destination)
             } else {
                 Toast.makeText(activity, "Requred field!", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

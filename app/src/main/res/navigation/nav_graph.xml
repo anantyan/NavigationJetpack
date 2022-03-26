@@ -22,8 +22,7 @@
             app:destination="@id/chooseRecipientFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:popUpTo="@id/nav_graph" />
         <action
             android:id="@+id/action_mainFragment_to_viewBalanceFragment"
             app:destination="@id/viewBalanceFragment"
@@ -47,11 +46,7 @@
         tools:layout="@layout/fragment_choose_recipient" >
         <action
             android:id="@+id/action_chooseRecipientFragment_to_specifyAmountFragment"
-            app:destination="@id/specifyAmountFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:destination="@id/specifyAmountFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewBalanceFragment"
@@ -63,6 +58,10 @@
         android:name="com.tutorial.navigation.view.fragment.SpecifyAmountFragment"
         android:label="Amount"
         tools:layout="@layout/fragment_specify_amount">
+        <argument
+            android:name="dataModel"
+            app:argType="com.tutorial.navigation.model.DataModel"
+            app:nullable="true" />
         <action
             android:id="@+id/action_specifyAmountFragment_to_confirmFragment"
             app:destination="@id/confirmFragment"
@@ -70,11 +69,7 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
-        <argument
-            android:name="dataModel"
-            app:argType="com.tutorial.navigation.model.DataModel"
-            app:nullable="true" />
-        <action
+        <!--<action
             android:id="@+id/action_specifyAmountFragment_to_viewBalanceFragment"
             app:destination="@id/viewBalanceFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
@@ -82,7 +77,7 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="false" />-->
     </fragment>
     <fragment
         android:id="@+id/confirmFragment"

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NavigationJetpack.iml" filepath="$PROJECT_DIR$/NavigationJetpack.iml" group="NavigationJetpack" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="NavigationJetpack/app" />
+      <module fileurl="file://$PROJECT_DIR$/NavigationJetpack.iml" filepath="$PROJECT_DIR$/NavigationJetpack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/NavigationJetpack.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/NavigationJetpack.app.iml" />
     </modules>
   </component>
 </project>

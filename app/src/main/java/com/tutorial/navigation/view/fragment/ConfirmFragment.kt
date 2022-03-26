@@ -16,19 +16,25 @@ import com.tutorial.navigation.databinding.FragmentConfirmBinding
 
 class ConfirmFragment : Fragment() {
 
-    private lateinit var binding: FragmentConfirmBinding
+    private var _binding: FragmentConfirmBinding? = null
+    private val binding get() = _binding!!
     private val args: ConfirmFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentConfirmBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentConfirmBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Toast.makeText(activity, args.dataModel.toString().trim(), Toast.LENGTH_LONG).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

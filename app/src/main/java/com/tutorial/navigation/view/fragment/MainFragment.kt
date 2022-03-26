@@ -7,37 +7,42 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 
 import com.tutorial.navigation.R
 import com.tutorial.navigation.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainBinding
-    private lateinit var navController: NavController
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
         binding.btnTransaction.setOnClickListener {
-            navController.navigate(R.id.action_mainFragment_to_viewTransactionFragment)
+            it.findNavController().navigate(R.id.action_mainFragment_to_viewTransactionFragment)
         }
         binding.btnSend.setOnClickListener {
-            navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
+            it.findNavController().navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
         }
         binding.btnBalance.setOnClickListener {
-            navController.navigate(R.id.action_mainFragment_to_viewBalanceFragment)
+            it.findNavController().navigate(R.id.action_mainFragment_to_viewBalanceFragment)
         }
         binding.btnTry.setOnClickListener {
-            navController.navigate(R.id.action_mainFragment_to_tryActivity)
+            it.findNavController().navigate(R.id.action_mainFragment_to_tryActivity)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

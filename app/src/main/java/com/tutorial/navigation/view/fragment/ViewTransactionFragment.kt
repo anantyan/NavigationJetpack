@@ -11,13 +11,19 @@ import com.tutorial.navigation.databinding.FragmentViewTransactionBinding
 
 class ViewTransactionFragment : Fragment() {
 
-    private lateinit var binding: FragmentViewTransactionBinding
+    private var _binding: FragmentViewTransactionBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentViewTransactionBinding.inflate(layoutInflater, container,false)
+        _binding = FragmentViewTransactionBinding.inflate(inflater, container,false)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
